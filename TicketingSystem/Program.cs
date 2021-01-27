@@ -6,7 +6,7 @@ namespace TicketingSystem
     {
         static void Main(string[] args)
         {
-            
+            Ticket myTicket = new Ticket("This is a ticket")
         }
     }
 }

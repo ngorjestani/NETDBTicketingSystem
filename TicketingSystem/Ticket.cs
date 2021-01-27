@@ -20,5 +20,15 @@ namespace TicketingSystem
             TicketID = nextID;
             nextID++;
         }
+
+        public string WatchingList(List<string> watching)
+        {
+          return string.join("|", watching);
+        }
+
+        public override string ToString()
+        {
+          return $"{TicketID},{TicketSummary},{TicketStatus},{TicketPriority},{TicketSubmitter},{TicketAssigned},{WatchingList(TicketWatching)}";
+        }
     }
 }
