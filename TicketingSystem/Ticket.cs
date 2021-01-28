@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TicketingSystem
 {
@@ -17,6 +18,7 @@ namespace TicketingSystem
         public Ticket(string summary)
         {
             TicketSummary = summary;
+            TicketStatus = Status.Open;
             TicketID = nextID;
             nextID++;
         }
@@ -28,7 +30,8 @@ namespace TicketingSystem
 
         public override string ToString()
         {
-          return $"{TicketID},{TicketSummary},{TicketStatus},{TicketPriority},{TicketSubmitter},{TicketAssigned},{WatchingList(TicketWatching)}";
+            string watching = WatchingList(TicketWatching);
+            return $"{TicketID},{TicketSummary},{TicketStatus},{TicketPriority},{TicketSubmitter},{TicketAssigned},{watching}";
         }
     }
 }
