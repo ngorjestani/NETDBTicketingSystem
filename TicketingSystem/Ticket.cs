@@ -23,7 +23,7 @@ namespace TicketingSystem
 
         public string WatchingList(List<string> watching)
         {
-          return string.join("|", watching);
+          return string.Join("|", watching);
         }
 
         public override string ToString()
