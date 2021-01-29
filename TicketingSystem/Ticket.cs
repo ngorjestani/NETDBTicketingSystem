@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TicketingSystem
 {
@@ -21,6 +22,13 @@ namespace TicketingSystem
             TicketStatus = Status.Open;
             TicketID = nextID;
             nextID++;
+        }
+
+        public void AddToFile(string file)
+        {
+            StreamWriter sw = new StreamWriter(file, true);
+            sw.WriteLine(ToString());
+            sw.Close();
         }
 
         public string WatchingList(List<string> watching)

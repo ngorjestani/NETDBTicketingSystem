@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TicketingSystem
 {
@@ -9,6 +10,8 @@ namespace TicketingSystem
         {
             while (true)
             {
+                string file = "..\\..\\..\\tickets.csv";
+                
                 Console.WriteLine("1) Submit a ticket\n2) See current tickets\n\nEnter any other key to exit.");
                 string userInput = Console.ReadLine();
                 if (userInput == "1")
@@ -21,11 +24,26 @@ namespace TicketingSystem
                     AddTicketAssigned(newTicket);
                     AddTicketWatching(newTicket);
                     
-                    Console.WriteLine(newTicket.ToString());
+                    /*Console.WriteLine(newTicket.ToString());*/
+                    
+                    newTicket.AddToFile(file);
                 }
                 else if (userInput == "2")
                 {
-                    
+                    StreamReader sr = new StreamReader(file);
+                    if (File.Exists(file))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            Console.WriteLine(line);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("File does not exist");
+                    }
+                    sr.Close();
                 }
                 else
                 {
@@ -84,6 +102,7 @@ namespace TicketingSystem
             }
 
             newTicket.TicketWatching = watchers;
+            
         }
     }
 }
