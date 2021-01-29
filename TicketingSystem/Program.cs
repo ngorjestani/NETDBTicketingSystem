@@ -82,6 +82,8 @@ namespace TicketingSystem
                 string person = Console.ReadLine();
                 watchers.Add(person);
             }
+
+            newTicket.TicketWatching = watchers;
         }
     }
 }
